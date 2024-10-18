@@ -109,48 +109,17 @@ module "telegram_notification" {
   tg_chat_id         = var.tg_chat_id
   tg_bot_token       = var.tg_bot_token
   
-  message_template = <<EOT
-    {{ if .Alerts.Firing -}}
-    Firing alerts:
-    {{- range .Alerts.Firing }}
-    {{ template "firing message template" . }}
-    {{ end }}
-    {{ end }}
-
-    {{ if .Alerts.Resolved -}}
-    Resolved alerts:
-    {{- range .Alerts.Resolved }}
-    {{ template "resolved message template" . }}
-    {{- end }}
-    {{- end }}
-  EOT
-
   group_wait      = "30s"
   group_interval  = "1m"
   repeat_interval = "1m"
-
   group_by        = ["instance", "alertname"]
 }
 
 #========================================
 
 module "custom_message_template" {
-  source = "./modules/message_template"
-  
+  source = "./modules/message_template"  
   name = "custom_message_template"
-
-  template_content = <<EOT
-  {{ define "firing message template" }}
-  🔥{{ .Labels.alertname }}
-  Summary: {{ .Annotations.summary }}
-  Instance {{ .Labels.instance }}: {{ printf "%.4f" .Values.B }}
-  {{ end }}
-
-  {{ define "resolved message template" }}
-  ✅{{ .Labels.alertname }}
-  Instance {{ .Labels.instance }}
-  {{ end }}
-  EOT
 }
 
 #========================================

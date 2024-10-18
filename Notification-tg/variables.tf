@@ -14,11 +14,6 @@ variable "tg_bot_token" {
   description = "Токен бота для Telegram"
 }
 
-variable "message_template" {
-  type        = string
-  description = "Шаблон сообщения для уведомлений"
-}
-
 variable "group_wait" {
   type        = string
   description = "Time to wait to buffer alerts of the same group before sending a notification"
