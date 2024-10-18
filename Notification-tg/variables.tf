@@ -37,3 +37,8 @@ variable "group_by" {
   description = "Поля для группировки уведомлений"
   default     = ["grafana_folder", "alertname"]
 }
+
+variable "editable" {
+  type = bool
+  default = false
+}

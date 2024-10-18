@@ -33,3 +33,8 @@ variable "folder_uid" {
   type = string
   default = ""
 }
+
+variable "editable" {
+  type = bool
+  default = false
+}

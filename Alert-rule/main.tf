@@ -2,7 +2,7 @@ resource "grafana_rule_group" "alert_rule" {
   name             = var.group_name
   folder_uid       = var.folder_uid
   interval_seconds = 60
-  disable_provenance = true
+  disable_provenance = var.editable
 
   dynamic "rule" {
     for_each = var.alerts

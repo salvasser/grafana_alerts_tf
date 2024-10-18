@@ -1,5 +1,6 @@
 resource "grafana_contact_point" "telegram" {
   name = var.contact_point_name
+  disable_provenance = var.editable
 
   telegram {
     chat_id = var.tg_chat_id

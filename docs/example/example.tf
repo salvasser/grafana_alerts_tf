@@ -36,9 +36,10 @@ data "grafana_folder" "resources" {
 #========================================
 
 module "local_alerts" {
-  source = "./modules/alert"
+  source = "github.com/salvasser/grafana_alerts_tf/Alert-rule"
 
   group_name   = "Local monitoring"
+  editable     = true
   
   alerts = [
     {
@@ -74,9 +75,10 @@ module "local_alerts" {
 }
 
 module "test_alert" {
-  source = "./modules/alert"
+  source = "github.com/salvasser/grafana_alerts_tf/Alert-rule"
 
   group_name   = "Test"
+  editable     = false
   
   alerts = [
     {
@@ -104,8 +106,9 @@ module "test_alert" {
 #========================================
 
 module "telegram_notification" {
-  source = "./modules/notification"
+  source = "github.com/salvasser/grafana_alerts_tf/Notification-tg"
 
+  editable           = true
   contact_point_name = "telegram"
   tg_chat_id         = var.tg_chat_id
   tg_bot_token       = var.tg_bot_token
@@ -119,8 +122,9 @@ module "telegram_notification" {
 #========================================
 
 module "custom_message_template" {
-  source = "./modules/message_template"  
-  name = "custom_message_template"
+  source   = "github.com/salvasser/grafana_alerts_tf/Message-template"   
+  name     = "custom_message_template"
+  editable = true
 }
 
 #========================================
