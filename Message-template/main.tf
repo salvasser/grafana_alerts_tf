@@ -1,4 +1,15 @@
 resource "grafana_message_template" "message" {
   name     = var.name
-  template = var.template_content
+  template = <<EOT
+  {{ define "firing message template" }}
+  🔥{{- .Labels.alertname }}
+  Summary: {{ .Annotations.summary }}
+  Instance {{ .Labels.instance }}: {{ printf "%.4f" .Values.B }}
+  {{ end }}
+
+  {{ define "resolved message template" }}
+  ✅{{- .Labels.alertname }}
+  Instance {{ .Labels.instance }}
+  {{ end }}
+  EOT
 }
