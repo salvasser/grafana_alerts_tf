@@ -58,7 +58,7 @@ resource "grafana_rule_group" "alert_rule" {
       annotations = {
         "summary"     = rule.value.summary
         "description" = rule.value.description
-        "__dashboardUid__": var.dashboard_uid,
+        "__dashboardUid__": rule.value.dashboard_uid,
         "__panelId__": rule.value.panel_id
       }
 

@@ -13,6 +13,7 @@ variable "alerts" {
     threshold         = number
     summary           = string
     description       = string
+    dashboard_uid     = optional(string)
     panel_id          = optional(string)
     time_range        = number
   }))
@@ -24,11 +25,6 @@ variable "labels" {
 }
 
 variable "datasource_uid" {
-  type = string
-  default = ""
-}
-
-variable "dashboard_uid" {
   type = string
   default = ""
 }
