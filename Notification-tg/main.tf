@@ -24,10 +24,11 @@ resource "grafana_contact_point" "telegram" {
 }
 
 resource "grafana_notification_policy" "tg_notification" {
-  contact_point   = grafana_contact_point.telegram.name
-  group_by        = var.group_by
-  group_wait      = var.group_wait
-  group_interval  = var.group_interval
-  repeat_interval = var.repeat_interval
-  depends_on      = [grafana_contact_point.telegram]
+  disable_provenance = var.editable
+  contact_point      = grafana_contact_point.telegram.name
+  group_by           = var.group_by
+  group_wait         = var.group_wait
+  group_interval     = var.group_interval
+  repeat_interval    = var.repeat_interval
+  depends_on         = [grafana_contact_point.telegram]
 }
