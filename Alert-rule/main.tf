@@ -15,9 +15,9 @@ resource "grafana_rule_group" "alert_rule" {
       no_data_state  = "NoData"
       exec_err_state = "Alerting"
 
-      # notification_settings {
-      #   contact_point = var.contact_point
-      # }
+      notification_settings {
+        contact_point = var.contact_point
+      }
 
       data {
         ref_id = "A"

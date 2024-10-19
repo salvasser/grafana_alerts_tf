@@ -39,7 +39,7 @@ variable "editable" {
   default = false
 }
 
-# variable "contact_point" {
-#   type = string
-#   default = ""
-# }
+variable "contact_point" {
+  type = string
+  default = ""
+}
