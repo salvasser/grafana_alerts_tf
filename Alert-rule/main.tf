@@ -19,6 +19,7 @@ resource "grafana_rule_group" "alert_rule" {
         contact_point = var.contact_point
       }
 
+
       data {
         ref_id = "A"
         relative_time_range {
