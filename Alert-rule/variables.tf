@@ -38,3 +38,8 @@ variable "editable" {
   type = bool
   default = false
 }
+
+variable "contact_point" {
+  type = string
+  default = ""
+}

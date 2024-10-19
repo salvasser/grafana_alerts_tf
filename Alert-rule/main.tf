@@ -8,8 +8,16 @@ resource "grafana_rule_group" "alert_rule" {
     for_each = var.alerts
     content {
       name      = rule.value.name
+      is_paused = false
       condition = "C"
       for       = rule.value.for
+
+      no_data_state  = "NoData"
+      exec_err_state = "Alerting"
+
+      notification_settings {
+        contact_point = var.contact_point
+      }
 
       data {
         ref_id = "A"
